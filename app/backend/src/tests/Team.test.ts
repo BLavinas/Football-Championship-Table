@@ -3,36 +3,29 @@ import * as chai from "chai";
 // @ts-ignore
 import chaiHttp = require("chai-http");
 import { app } from "../app";
-
 import { Response } from "superagent";
-import ITeams from '../api/interfaces/ITeams'
-import { Model } from "sequelize";
+import TeamModel from '../database/models/TeamModel'
+import teamMock from './Mocks/TeamMock'
 
 chai.use(chaiHttp);
 const { expect } = chai;
 
 describe("Testing team route", () => {
-  /**
+   /**
    * Exemplo do uso de stubs com tipos
    */
-
   let chaiHttpResponse: Response;
-  afterEach(() => {
-    sinon.restore();
+  before(async () => {
+    sinon
+      .stub(TeamModel, "findAll")
+      .resolves(teamMock as TeamModel[]);
+      sinon.stub(TeamModel, "findOne").resolves(teamMock[0] as TeamModel);
   });
 
-  // before(async () => {
-  //   sinon
-  //     .stub(TeamModel, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as TeamModel);
-  // });
-
-  // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
-  // })
-
+  after(()=>{
+    (TeamModel.findAll as sinon.SinonStub).restore();
+    (TeamModel.findOne as sinon.SinonStub).restore();
+  })
   // it('...', async () => {
   //   chaiHttpResponse = await chai
   //      .request(app)
@@ -43,30 +36,20 @@ describe("Testing team route", () => {
 
   it("Testing reading all teams", async () => {
     // Arrange
-    // const teamListMock: ITeams[] = [{
-    //   id: 1313,
-    //   teamName: 'Galo Doido'
-    // }]
-    // sinon.stub(Model, 'findAll').resolves(teamListMock)
-
-    //Action
+    // Action
     chaiHttpResponse = await chai.request(app).get("/teams");
 
     //Arrange
     expect(chaiHttpResponse.status).to.be.equal(200);
-    // expect(chaiHttpResponse.body).to.be.equal(teamListMock);
+    expect(chaiHttpResponse.body).to.be.deep.equal(teamMock);
   });
-  it("Testing success reading team by id", async () => {
+  it("Testing reading team by id", async () => {
     //Arrange
-    // const teamListMock = {
-    //   id: 89,
-    //   teamName: "Galo Doido",
-    // };
     //Action
-    const response = await chai.request(app).get("/teams/1");
+    chaiHttpResponse = await chai.request(app).get("/teams/1");
     //Arrange
-    expect(response.status).to.be.equal(200);
-    // expect(response.body).to.deep.equal(teamListMock);
+    expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.deep.equal(teamMock[0]);
   });
 });
 
