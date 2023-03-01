@@ -12,4 +12,10 @@ export default class TeamController {
     const result = await this._teamService.readAll(_req, res);
     res.status(200).json(result);
   }
+
+  async readById(req: Request, res: Response): Promise<void> {
+    const { id } = req.params;
+    const result = await this._teamService.readById(id);
+    res.status(200).json(result);
+  }
 }
