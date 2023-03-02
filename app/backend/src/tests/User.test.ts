@@ -16,11 +16,12 @@ describe('Testing User route', () => {
     // sinon.stub(UserModel, "create").resolves(userMock as UserModel);
   // });
 
-  after(() => {
-    (UserModel.create as sinon.SinonStub).restore();
-  });
+   after(() => {
+     (UserModel.findOne as sinon.SinonStub).restore();
+   });
+   
   it('Test success login', async () => {
-    chaiHttpResponse = await chai.request(app).post('/login').send();
+    chaiHttpResponse = await chai.request(app).post('/login').send({email: 'user@user.com', password: '1234657'});
     expect(chaiHttpResponse.status).to.be.equal(200);
   })
 })

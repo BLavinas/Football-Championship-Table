@@ -1,4 +1,5 @@
 import * as express from 'express';
+import loginRoutes from './api/routes/Login.routes';
 import teamRoutes from './api/routes/Team.routes';
 
 class App {
@@ -16,6 +17,7 @@ class App {
 
   private routes(): void {
     this.app.use('/teams', teamRoutes);
+    this.app.use('/login', loginRoutes);
   }
 
   private config():void {
