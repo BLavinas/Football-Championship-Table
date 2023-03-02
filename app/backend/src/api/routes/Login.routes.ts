@@ -1,13 +1,16 @@
 import { Request, Response, Router } from 'express';
 
 import UserController from '../controllers/LoginController';
-import LoginService from '../services/LoginService';
+import loginField from '../Middlewares/loginFields';
 
 const loginRoutes = Router();
 
-const userService = new LoginService();
-const userController = new UserController(userService);
+const userController = new UserController();
 
-loginRoutes.post('/', (req: Request, res: Response) => userController.authenticateLogin(req, res));
+loginRoutes.post(
+  '/',
+  loginField,
+  (req: Request, res: Response) => userController.authenticateLogin(req, res),
+);
 
 export default loginRoutes;

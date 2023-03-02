@@ -1,3 +1,3 @@
 export default interface IServiceUsers {
-  authenticateLogin(email: string): void
+  authenticateLogin(email: string, password: string): void
 }
