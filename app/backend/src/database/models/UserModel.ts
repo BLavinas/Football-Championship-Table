@@ -40,7 +40,7 @@ Users.init(
     sequelize: db,
     modelName: 'users',
     timestamps: false,
-    defaultScope: { attributes: { exclude: ['password'] } },
+    scopes: { noPassword: { attributes: { exclude: ['password'] } } },
   },
 );
 

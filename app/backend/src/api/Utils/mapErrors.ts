@@ -1,6 +1,7 @@
 const errors = [
   { errorStatus: 400, errorMessage: 'All fields must be filled' },
-  { errorStatus: 401, errorMessage: 'Expired or invalid token' },
+  { errorStatus: 400, errorMessage: 'Expired or invalid token' },
+  { errorStatus: 401, errorMessage: 'Invalid email or password' },
 ];
 
 const mapError = (message: string) => {

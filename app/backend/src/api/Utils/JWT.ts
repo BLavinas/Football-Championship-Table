@@ -10,7 +10,7 @@ export default class JWTToken {
     this.jwtConfig = { algorithm: 'HS256', expiresIn: '7d' };
   }
 
-  public generateToken = (payload: object) => sign(
+  public generateToken = (payload: object | null) => sign(
     { data: payload },
     this._JWT_SECRET,
 
