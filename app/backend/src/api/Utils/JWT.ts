@@ -1,5 +1,5 @@
-import { Secret, verify, sign } from 'jsonwebtoken';
-import mapError from './mapErrors';
+import { Secret, verify, sign, JwtPayload } from 'jsonwebtoken';
+import CustomErrors from '../errors/customErrors';
 
 export default class JWTToken {
   private _JWT_SECRET: Secret;
@@ -19,9 +19,9 @@ export default class JWTToken {
 
   public authenticateToken = (token: string) => {
     try {
-      verify(token, this._JWT_SECRET);
+      return verify(token, this._JWT_SECRET) as JwtPayload;
     } catch (err) {
-      return mapError('Expired or invalid token');
+      throw new CustomErrors('Token must be a valid token', '401');
     }
   };
 }
