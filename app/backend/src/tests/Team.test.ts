@@ -11,17 +11,17 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe("Testing team route", () => {
-   /**
+  /**
    * Exemplo do uso de stubs com tipos
-   */
-  let chaiHttpResponse: Response;
-  before(async () => {
-    sinon
-      .stub(TeamModel, "findAll")
-      .resolves(teamMock as TeamModel[]);
-      sinon.stub(TeamModel, "findOne").resolves(teamMock[0] as TeamModel);
-  });
+  */
+ let chaiHttpResponse: Response;
 
+ before(async () => {
+   sinon
+     .stub(TeamModel, "findAll")
+     .resolves(teamMock as TeamModel[]);
+     sinon.stub(TeamModel, "findOne").resolves(teamMock[0] as TeamModel);
+ });
   after(()=>{
     (TeamModel.findAll as sinon.SinonStub).restore();
     (TeamModel.findOne as sinon.SinonStub).restore();

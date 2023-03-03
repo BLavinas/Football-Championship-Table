@@ -21,7 +21,8 @@ describe('Testing User route', () => {
    });
 
   it('Test success login', async () => {
-    chaiHttpResponse = await chai.request(app).post('/login').send({email: 'user@user.com', password: '1234657'});
+    const userInfo = {email: 'user@user.com', password: 'secret_user'}
+    chaiHttpResponse = await chai.request(app).post("/login").send(userInfo);
     expect(chaiHttpResponse.status).to.be.equal(200);
   })
 })
