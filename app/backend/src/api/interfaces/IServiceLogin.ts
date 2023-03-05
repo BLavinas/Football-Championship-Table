@@ -1,4 +1,4 @@
-export default interface IServiceUsers {
+export default interface IServiceLogin {
   authenticateLogin(email: string, password: string): void
-  getUserRole(token: string): any
+  getUserRole(token: string): object
 }

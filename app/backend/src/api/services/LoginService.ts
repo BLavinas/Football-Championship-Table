@@ -20,9 +20,8 @@ export default class LoginService implements IServiceLogin {
     if (!userPassword) {
       throw new CustomErrors('Invalid email or password', '401');
     }
-
-    const tokenClass = new JWTToken();
-    return tokenClass.generateToken({
+    // const tokenClass = new JWTToken();
+    return this.tokenClass.generateToken({
       id: userByEmail.id,
       username: userByEmail.username,
       email: userByEmail.email,

@@ -3,18 +3,17 @@ import CustomErrors from '../errors/customErrors';
 
 export default class JWTToken {
   private _JWT_SECRET: Secret;
-  private jwtConfig: object;
+  private _jwtConfig: object;
 
   constructor() {
     this._JWT_SECRET = process.env.JWT_SECRET || 'defaultSecret';
-    this.jwtConfig = { algorithm: 'HS256', expiresIn: '7d' };
+    this._jwtConfig = { algorithm: 'HS256', expiresIn: '7d' };
   }
 
   public generateToken = (payload: object | null) => sign(
     { data: payload },
     this._JWT_SECRET,
-
-    this.jwtConfig,
+    this._jwtConfig,
   );
 
   public authenticateToken = (token: string) => {

@@ -7,7 +7,7 @@ const tokenCheck = (req: Request, _res: Response, next: NextFunction) => {
   if (!authorization) throw new CustomErrors('Token not found', '401');
   const jwtClass = new JWTToken();
   const validateToken = jwtClass.authenticateToken(authorization);
-  if (validateToken === null) throw new CustomErrors('Token must be a valid token', '401');
+  if (!validateToken) throw new CustomErrors('Token must be a valid token', '401');
   next();
 };
 
