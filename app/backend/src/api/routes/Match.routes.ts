@@ -17,5 +17,10 @@ matchRoutes.patch(
   tokenCheck,
   (req: Request, res: Response) => matchController.updateMatchGoals(req, res),
 );
+matchRoutes.post(
+  '/',
+  tokenCheck,
+  (req: Request, res: Response) => matchController.createMatch(req, res),
+);
 
 export default matchRoutes;
