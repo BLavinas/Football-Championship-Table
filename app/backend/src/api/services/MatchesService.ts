@@ -29,7 +29,18 @@ export default class MatchService implements IServiceMatches {
   async finishMatch(id: string): Promise<object> {
     const finishingMatch: number[] = await this.model
       .update({ inProgress: false }, { where: { id } });
+
     if (finishingMatch[0] === 1) return { message: 'Finished' };
+
     return { message: 'cant finish the match' };
+  }
+
+  async updateMatchGoals(id: string, homeGoals: number, awayGoals: number): Promise<object> {
+    const updateGoals = await this.model.update(
+      { homeTeamGoals: homeGoals, awayTeamGoals: awayGoals },
+      { where: { id } },
+    );
+    if (updateGoals[0] === 1) return { message: 'match updated successfully' };
+    return { message: 'cannot update match' };
   }
 }

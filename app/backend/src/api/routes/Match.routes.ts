@@ -12,5 +12,10 @@ matchRoutes.patch(
   tokenCheck,
   (req: Request, res: Response) => matchController.finishMatch(req, res),
 );
+matchRoutes.patch(
+  '/:id',
+  tokenCheck,
+  (req: Request, res: Response) => matchController.updateMatchGoals(req, res),
+);
 
 export default matchRoutes;
