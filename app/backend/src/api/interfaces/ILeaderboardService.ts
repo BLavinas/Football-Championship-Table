@@ -1,3 +1,3 @@
 export default interface ILeaderboardService {
-  getTeamsPerfomance(): any
+  getTeamsPerfomance(path: string): void
 }

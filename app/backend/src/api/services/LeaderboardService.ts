@@ -28,9 +28,9 @@ export default class LeaderboardService implements ILeaderboardService {
       goalsFavor: totalFavorGoals(team.id, finished),
       goalsOwn: totalOwnGoals(team.id, finished),
       totalPoints: totalPoints(team.id, finished),
-      goalsBalance:
-        totalFavorGoals(team.id, finished) - totalOwnGoals(team.id, finished),
-      efficiency: ((totalPoints(team.id, finished) / (totalHomeGames(team.id, finished) * 3)) * 100)
+      goalsBalance: totalFavorGoals(team.id, finished) - totalOwnGoals(team.id, finished),
+      efficiency: ((totalPoints(team.id, finished)
+       / (totalHomeGames(team.id, finished) * 3)) * 100)
         .toFixed(2),
     }));
     return this.orderLeaderBoard(leaderBoard);
@@ -51,9 +51,3 @@ export default class LeaderboardService implements ILeaderboardService {
     return this.construtingLeaderBoard(allTeams, finishedMatches);
   }
 }
-
-// ver por id quantas patidas time jogou em casa
-// cada objeto dentro de times tem nome e id do time
-// usar array de partidas para ver quantas partidas o time jogou... etc..
-// fazer uma função para cada chave do objeto que será criado no map de allTeams
-// na mesma função fazer total de vitorias dentro e fora de casa

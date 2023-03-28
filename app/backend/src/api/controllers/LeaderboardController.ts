@@ -9,8 +9,11 @@ export default class LeaderboardController {
     this._leaderboardService = leaderboardService;
   }
 
-  async getTeamsPerformance(_req: Request, res: Response) {
-    const finishedMatches = await this._leaderboardService.getTeamsPerfomance();
+  async getTeamsPerformance(req: Request, res: Response) {
+    const homeOrAway = req.path;
+    const finishedMatches = await this._leaderboardService.getTeamsPerfomance(
+      homeOrAway,
+    );
     res.status(200).json(finishedMatches);
   }
 }
