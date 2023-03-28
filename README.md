@@ -1,13 +1,22 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+<h1 align="center">Football Championship Table :soccer:</h1
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+O TFC é um site informativo sobre partidas e classificações de futebol!
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+ Nesse projeto fui responsável por desenvolver uma API e integrar as aplicações usando o docker-compose, construir o back-end dockerizado usando o Sequelize para modelar os dados seguindo as regras de negócio definidas, onde o front-end já estava disponível.
+ Para adicionar uma partida, é necessário um token de autenticação. Para atualizar as partidas, é utilizado o relacionamento entre as tabelas teams e matches.
+
+<h4>Skills:</h4>
+<ul>
+<li>Sequelize;</li>
+<li>TypeScript;</li>
+<li>Docker;</li>
+<li>TDD;</li>
+<li>SOLID;</li>
+<li>JSON Web Tokens(JWT);</li>
+<li>Sinon;</li>
+<li>Chai;</li>
+<li>API Restful;</li>
+<li>Node.js;</li>
+<li>Express;</li>
+<li>POO;</li>
+</ul>
